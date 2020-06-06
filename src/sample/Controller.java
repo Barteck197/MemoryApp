@@ -16,9 +16,10 @@ public class Controller {
     @FXML
     private void startTime() {
         state = true;
-        Thread t = new Thread(() -> {
-            for (; ; ) {
-                if (state) {
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                while (state) {
                     try {
                         Thread.sleep(1000);
 
@@ -40,13 +41,9 @@ public class Controller {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                } else {
-                    break;
                 }
             }
-        });
+        };
         t.start();
     }
-
-
 }
