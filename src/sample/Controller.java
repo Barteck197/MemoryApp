@@ -1,22 +1,26 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class Controller {
-    static int seconds = 0;
-    static int minutes = 0;
-    static int hours = 0;
 
     static boolean state = true;
+
 
     @FXML
     Label appTime;
 
+    TimeFlow timeFlow = new TimeFlow(appTime);
+
     @FXML
     private void startTime() {
         state = true;
-        Thread t = new Thread() {
+
+        Platform.runLater(timeFlow);
+
+       /*Thread t = new Thread() {
             @Override
             public void run() {
                 while (state) {
@@ -44,6 +48,6 @@ public class Controller {
                 }
             }
         };
-        t.start();
+        t.start();*/
     }
 }
