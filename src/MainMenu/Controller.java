@@ -4,20 +4,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class Controller {
+
+    //tracing time
     static int seconds = 0;
     static int minutes = 0;
     static int hours = 0;
-
     static boolean state = true;
-
     @FXML
     Label appTime;
 
@@ -55,16 +55,28 @@ public class Controller {
         t.start();
     }
 
+    //scenes & windows declaration
+    Scene boardScene;
+    Stage windowBoard;
+
     @FXML
-    private void gameSettingsScene(javafx.event.ActionEvent event) throws IOException {
+    private void gameSettingsScene() throws IOException {
 
         Parent board = FXMLLoader.load(getClass().getResource("board.fxml"));
+        boardScene = new Scene(board, Color.BLUE);
 
-        Scene boardScene = new Scene(board, Color.BLUE);
-
-        Stage windowBoard = new Stage();
+        windowBoard = new Stage();
         windowBoard.setScene(boardScene);
         windowBoard.show();
+    }
+
+    @FXML
+    Button closeButton;
+
+    @FXML
+    private void exitGame() {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 
 }

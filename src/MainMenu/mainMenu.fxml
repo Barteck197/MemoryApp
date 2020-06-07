@@ -20,6 +20,6 @@
 
     <Button prefHeight="30.0" prefWidth="200.0" text="High Scores" GridPane.rowIndex="2"/>
 
-    <Button prefHeight="30.0" prefWidth="200.0" text="Exit" GridPane.rowIndex="3"/>
+    <Button prefHeight="30.0" prefWidth="200.0" text="Exit" onAction="#exitGame" fx:id="closeButton" GridPane.rowIndex="3"/>
 
 </GridPane>
