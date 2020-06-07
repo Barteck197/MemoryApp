@@ -83,12 +83,12 @@ public class Controller {
 
     @FXML
     private void backToMenu(ActionEvent event) throws IOException {
-        Parent highScoreBoard = FXMLLoader.load(getClass().getResource("scenes/mainMenu.fxml"));
-        Scene highScoreScene = new Scene(highScoreBoard);
+        Parent mainMenu = FXMLLoader.load(getClass().getResource("scenes/mainMenu.fxml"));
+        Scene menu = new Scene(mainMenu,600,400);
 
         Stage windowHighScores = (Stage) ((Node)event.getSource()).getScene().getWindow();
         windowHighScores.setTitle("High Scores");
-        windowHighScores.setScene(highScoreScene);
+        windowHighScores.setScene(menu);
         windowHighScores.show();
 
     }
