@@ -59,10 +59,11 @@ public class Controller {
     @FXML
     private void gameSettingsScene() throws IOException {
 
-        Parent board = FXMLLoader.load(getClass().getResource("scenes/board.fxml"));
+        Parent board = FXMLLoader.load(getClass().getResource("scenes/boardSettings.fxml"));
         Scene boardScene = new Scene(board, Color.BLUE);
 
         Stage windowBoard = new Stage();
+        windowBoard.setTitle("Game parameters");
         windowBoard.setScene(boardScene);
         windowBoard.show();
     }
