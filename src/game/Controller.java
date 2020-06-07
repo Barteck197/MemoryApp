@@ -63,7 +63,7 @@ public class Controller {
         Parent boardSettings = FXMLLoader.load(getClass().getResource("scenes/boardSettings.fxml"));
         Scene boardScene = new Scene(boardSettings);
 
-        Stage windowBoardParams = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Stage windowBoardParams = (Stage) ((Node)event.getSource()).getScene().getWindow();
         windowBoardParams.setTitle("Game parameters");
         windowBoardParams.setScene(boardScene);
         windowBoardParams.show();
@@ -74,7 +74,19 @@ public class Controller {
         Parent highScoreBoard = FXMLLoader.load(getClass().getResource("scenes/highScores.fxml"));
         Scene highScoreScene = new Scene(highScoreBoard);
 
-        Stage windowHighScores = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Stage windowHighScores = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        windowHighScores.setTitle("High Scores");
+        windowHighScores.setScene(highScoreScene);
+        windowHighScores.show();
+
+    }
+
+    @FXML
+    private void backToMenu(ActionEvent event) throws IOException {
+        Parent highScoreBoard = FXMLLoader.load(getClass().getResource("scenes/mainMenu.fxml"));
+        Scene highScoreScene = new Scene(highScoreBoard);
+
+        Stage windowHighScores = (Stage) ((Node)event.getSource()).getScene().getWindow();
         windowHighScores.setTitle("High Scores");
         windowHighScores.setScene(highScoreScene);
         windowHighScores.show();
