@@ -21,14 +21,5 @@
     <Button prefHeight="30.0" prefWidth="200.0" text="High Scores" GridPane.rowIndex="2"/>
 
     <Button prefHeight="30.0" prefWidth="200.0" text="Exit" GridPane.rowIndex="3"/>
-    <columnConstraints>
-        <ColumnConstraints/>
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints/>
-    </rowConstraints>
 
 </GridPane>
