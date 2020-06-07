@@ -68,7 +68,7 @@ public class Controller {
     }
 
     @FXML
-    private void highScoresTable() throws IOException{
+    private void highScoresTable() throws IOException {
         Parent highScoreBoard = FXMLLoader.load(getClass().getResource("scenes/highScores.fxml"));
         Scene highScoreScene = new Scene(highScoreBoard);
 
