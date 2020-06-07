@@ -9,12 +9,10 @@
         <Insets top="25" right="25" bottom="10" left="25"/>
     </padding>
 
-    <Button text="Start" onMouseClicked="#startTime" GridPane.rowIndex="0" alignment="CENTER"/>
+    <Button text="New Game" onAction="#gameSettingsScene" GridPane.rowIndex="0"/>
 
-    <Button text="Go to the other scene" onAction="#addScene" GridPane.rowIndex="1"/>
+    <Button text="High Scores" GridPane.rowIndex="1"/>
 
-    <Label text="Current time:" GridPane.rowIndex="2" alignment="CENTER"/>
-
-    <Label fx:id="appTime" text="00:00" GridPane.rowIndex="3" alignment="CENTER"/>
+    <Button text="Exit" GridPane.rowIndex="2"/>
 
 </GridPane>

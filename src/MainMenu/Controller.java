@@ -56,7 +56,7 @@ public class Controller {
     }
 
     @FXML
-    private void addScene(javafx.event.ActionEvent event) throws IOException {
+    private void gameSettingsScene(javafx.event.ActionEvent event) throws IOException {
 
         Parent board = FXMLLoader.load(getClass().getResource("board.fxml"));
 
