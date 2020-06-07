@@ -58,13 +58,13 @@ public class Controller {
     @FXML
     private void addScene(javafx.event.ActionEvent event) throws IOException {
 
-        Parent view = FXMLLoader.load(getClass().getResource("board.fxml"));
+        Parent board = FXMLLoader.load(getClass().getResource("board.fxml"));
 
-        Scene scene2 = new Scene(view, Color.BLUE);
+        Scene boardScene = new Scene(board, Color.BLUE);
 
-        Stage window = new Stage();
-        window.setScene(scene2);
-        window.show();
+        Stage windowBoard = new Stage();
+        windowBoard.setScene(boardScene);
+        windowBoard.show();
     }
 
 }
