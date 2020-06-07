@@ -11,8 +11,10 @@
 
     <Button text="Start" onMouseClicked="#startTime" GridPane.rowIndex="0" alignment="CENTER"/>
 
-    <Label text="Current time:" GridPane.rowIndex="1" alignment="CENTER"/>
+    <Button text="Go to the other scene" onAction="#addScene" GridPane.rowIndex="1"/>
 
-    <Label fx:id="appTime" text="00:00" GridPane.rowIndex="2" alignment="CENTER"></Label>
+    <Label text="Current time:" GridPane.rowIndex="2" alignment="CENTER"/>
+
+    <Label fx:id="appTime" text="00:00" GridPane.rowIndex="3" alignment="CENTER"/>
 
 </GridPane>
