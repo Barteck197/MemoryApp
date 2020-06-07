@@ -55,17 +55,14 @@ public class Controller {
         t.start();
     }
 
-    //scenes & windows declaration
-    Scene boardScene;
-    Stage windowBoard;
 
     @FXML
     private void gameSettingsScene() throws IOException {
 
         Parent board = FXMLLoader.load(getClass().getResource("board.fxml"));
-        boardScene = new Scene(board, Color.BLUE);
+        Scene boardScene = new Scene(board, Color.BLUE);
 
-        windowBoard = new Stage();
+        Stage windowBoard = new Stage();
         windowBoard.setScene(boardScene);
         windowBoard.show();
     }
