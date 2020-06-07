@@ -35,8 +35,8 @@ public class Controller {
 
                         seconds++;
 
-                        appTime.setText(minutes + " : " + seconds);
-                        System.out.println(hours + " : " + minutes + " : " + seconds);
+//                        appTime.setText(minutes + " : " + seconds);
+                        System.out.println(hours + ":" + minutes + ":" + seconds);
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
