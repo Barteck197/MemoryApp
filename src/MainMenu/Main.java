@@ -1,4 +1,4 @@
-package board;
+package MainMenu;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,17 +7,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
     @Override
-    public void start(Stage boardStage) throws Exception {
+    public void start(Stage menuStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("board.fxml"));
-        boardStage.setTitle("Hello World");
-        boardStage.setScene(new Scene(root, 600, 400));
-        boardStage.show();
+        menuStage.setTitle("Main Menu");
+        menuStage.setScene(new Scene(root, 600, 400));
+        menuStage.show();
 
-        boardStage.setOnCloseRequest(windowEvent -> Controller.state = false);
     }
-
 
     public static void main(String[] args) {
         launch(args);
