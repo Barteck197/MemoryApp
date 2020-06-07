@@ -18,8 +18,9 @@
 
     <Button onAction="#gameSettingsScene" prefHeight="30.0" prefWidth="200.0" text="New Game" GridPane.rowIndex="1"/>
 
-    <Button prefHeight="30.0" prefWidth="200.0" text="High Scores" GridPane.rowIndex="2"/>
+    <Button onAction="#highScoresTable" prefHeight="30.0" prefWidth="200.0" text="High Scores" GridPane.rowIndex="2"/>
 
-    <Button prefHeight="30.0" prefWidth="200.0" text="Exit" onAction="#exitGame" fx:id="closeButton" GridPane.rowIndex="3"/>
+    <Button onAction="#exitGame" prefHeight="30.0" prefWidth="200.0" text="Exit" fx:id="closeButton"
+            GridPane.rowIndex="3"/>
 
 </GridPane>

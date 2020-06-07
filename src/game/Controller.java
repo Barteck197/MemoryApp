@@ -59,13 +59,25 @@ public class Controller {
     @FXML
     private void gameSettingsScene() throws IOException {
 
-        Parent board = FXMLLoader.load(getClass().getResource("scenes/boardSettings.fxml"));
-        Scene boardScene = new Scene(board, Color.BLUE);
+        Parent boardSettings = FXMLLoader.load(getClass().getResource("scenes/boardSettings.fxml"));
+        Scene boardScene = new Scene(boardSettings);
 
-        Stage windowBoard = new Stage();
-        windowBoard.setTitle("Game parameters");
-        windowBoard.setScene(boardScene);
-        windowBoard.show();
+        Stage windowBoardParams = new Stage();
+        windowBoardParams.setTitle("Game parameters");
+        windowBoardParams.setScene(boardScene);
+        windowBoardParams.show();
+    }
+
+    @FXML
+    private void highScoresTable() throws IOException{
+        Parent highScoreBoard = FXMLLoader.load(getClass().getResource("scenes/highScores.fxml"));
+        Scene highScoreScene = new Scene(highScoreBoard);
+
+        Stage windowHighScores = new Stage();
+        windowHighScores.setTitle("High Scores");
+        windowHighScores.setScene(highScoreScene);
+        windowHighScores.show();
+
     }
 
     @FXML
