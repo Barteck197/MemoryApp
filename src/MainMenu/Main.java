@@ -7,14 +7,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    @Override
-    public void start(Stage menuStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("board.fxml"));
-        menuStage.setTitle("Main Menu");
-        menuStage.setScene(new Scene(root, 600, 400));
-        menuStage.show();
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.show();
+
+        primaryStage.setOnCloseRequest(windowEvent -> Controller.state = false);
     }
+
 
     public static void main(String[] args) {
         launch(args);

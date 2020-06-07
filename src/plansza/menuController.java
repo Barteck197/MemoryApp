@@ -1,4 +1,4 @@
-package MainMenu;
+package plansza;
 
 public class menuController {
 }
