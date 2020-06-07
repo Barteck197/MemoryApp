@@ -7,5 +7,5 @@ module MemoryApp {
     requires javafx.media;
     requires javafx.swing;
 
-    opens MainMenu;
+    opens game;
 }

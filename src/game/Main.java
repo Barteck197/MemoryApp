@@ -1,4 +1,4 @@
-package MainMenu;
+package game;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,6 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
 
-        primaryStage.setOnCloseRequest(windowEvent -> Controller.state = false);
     }
 
 

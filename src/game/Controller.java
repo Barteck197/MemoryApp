@@ -1,4 +1,4 @@
-package MainMenu;
+package game;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
