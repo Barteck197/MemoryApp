@@ -70,11 +70,11 @@ public class Controller {
     }
 
     @FXML
-    private void highScoresTable() throws IOException {
+    private void highScoresTable(ActionEvent event) throws IOException {
         Parent highScoreBoard = FXMLLoader.load(getClass().getResource("scenes/highScores.fxml"));
         Scene highScoreScene = new Scene(highScoreBoard);
 
-        Stage windowHighScores = new Stage();
+        Stage windowHighScores = (Stage) (((Node)event.getSource()).getScene().getWindow());
         windowHighScores.setTitle("High Scores");
         windowHighScores.setScene(highScoreScene);
         windowHighScores.show();
