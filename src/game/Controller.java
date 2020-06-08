@@ -98,4 +98,15 @@ public class Controller {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void startGame(ActionEvent event) throws IOException {
+        Parent boardSettings = FXMLLoader.load(getClass().getResource("scenes/board.fxml"));
+        Scene boardScene = new Scene(boardSettings);
+
+        Stage windowBoardParams = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        windowBoardParams.setTitle("Game!!");
+        windowBoardParams.setScene(boardScene);
+        windowBoardParams.show();
+    }
 }
