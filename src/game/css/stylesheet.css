@@ -2,3 +2,8 @@
     -fx-font-size: 24;
     -fx-text-fill: brown;
 }
+
+#boardWindowTitle {
+    -fx-font-size: 18;
+    -fx-text-fill: brown;
+}
