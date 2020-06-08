@@ -1,11 +1,11 @@
 package game;
 
-public class Plaque {
+public class Card {
     int height = 20;
     int width = 20;
     int id;
 
-    public Plaque(){
+    public Card(){
 
     }
 }

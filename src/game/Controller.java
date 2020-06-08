@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -57,6 +58,7 @@ public class Controller {
     }
 
 
+    //creating scenes
     @FXML
     private void gameSettingsScene(ActionEvent event) throws IOException {
         Parent boardSettings = FXMLLoader.load(getClass().getResource("scenes/boardSettings.fxml"));
@@ -109,4 +111,21 @@ public class Controller {
         windowBoardParams.setScene(boardScene);
         windowBoardParams.show();
     }
+
+    @FXML
+    TextField rows;
+
+    @FXML
+    TextField columns;
+
+    public int getrows() {
+        return Integer.parseInt(rows.getText());
+    }
+
+    public int getColumns() {
+        return Integer.parseInt(columns.getText());
+    }
+
+    //TODO input validation: rows x columns % 2 == 0
+
 }
