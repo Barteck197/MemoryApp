@@ -115,6 +115,8 @@ public class Controller {
         windowBoardParams.show();
     }
 
+
+    //game settings
     @FXML
     TextField rows;
 
@@ -131,10 +133,8 @@ public class Controller {
 
     //TODO input validation: rows x columns % 2 == 0
 
-    //TODO method returning gridPane
-
     @FXML
-//    private GridPane gameBoard = board(getrows(),getColumns());
+    private GridPane gameBoard;
     private ImageIcon card;
 
     public static GridPane board(int rows, int columns) {
@@ -153,5 +153,4 @@ public class Controller {
         }
         return board;
     }
-
 }

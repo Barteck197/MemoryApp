@@ -3,8 +3,6 @@ package game;
 import javafx.scene.shape.Rectangle;
 
 public class Card extends Rectangle {
-    int height = 20;
-    int width = 20;
     static int id = 1;
 
     public Card() {
