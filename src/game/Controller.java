@@ -133,7 +133,8 @@ public class Controller {
 
     //TODO method returning gridPane
 
-    private GridPane gameBoard;
+    @FXML
+//    private GridPane gameBoard = board(getrows(),getColumns());
     private ImageIcon card;
 
     public static GridPane board(int rows, int columns) {
@@ -143,11 +144,11 @@ public class Controller {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
 
-                Button card = new Button();
+                Card card = new Card();
 
                 //TODO dodawanie grafiki karty
                 board.add(card, i, j);
-                GridPane.setMargin(card, new Insets(10));
+                GridPane.setMargin(card, new Insets(5));
             }
         }
         return board;

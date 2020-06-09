@@ -1,11 +1,16 @@
 package game;
 
-public class Card {
+import javafx.scene.shape.Rectangle;
+
+public class Card extends Rectangle {
     int height = 20;
     int width = 20;
-    int id;
+    static int id = 1;
 
-    public Card(){
-
+    public Card() {
+        this.setWidth(20);
+        this.setHeight(20);
+        this.setId(String.valueOf(id));
+        id++;
     }
 }
