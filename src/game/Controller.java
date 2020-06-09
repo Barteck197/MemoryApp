@@ -3,14 +3,17 @@ package game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class Controller {
@@ -127,5 +130,27 @@ public class Controller {
     }
 
     //TODO input validation: rows x columns % 2 == 0
+
+    //TODO method returning gridPane
+
+    private GridPane gameBoard;
+    private ImageIcon card;
+
+    public static GridPane board(int rows, int columns) {
+
+        GridPane board = new GridPane();
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+
+                Button card = new Button();
+
+                //TODO dodawanie grafiki karty
+                board.add(card, i, j);
+                GridPane.setMargin(card, new Insets(10));
+            }
+        }
+        return board;
+    }
 
 }
