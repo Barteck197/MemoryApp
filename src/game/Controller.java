@@ -1,5 +1,6 @@
 package game;
 
+import game.scenes.Board;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -114,6 +115,10 @@ public class Controller {
         windowBoardParams.setScene(boardScene);
         windowBoardParams.show();
     }
+//
+//    private void startClassyGame(){
+//        Board game = new Board(ActionEvent);
+//    }
 
 
     //game settings
