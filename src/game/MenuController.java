@@ -67,8 +67,7 @@ public class MenuController {
 
     //creating scenes
     @FXML
-    private void gameSettingsScene(ActionEvent event) throws IOException {
-
+    private void gameSettingsScene() throws IOException {
         Stage window;
         Scene boardSettings;
 
@@ -78,18 +77,22 @@ public class MenuController {
 
         boardSettings = new Scene(FXMLLoader.load(getClass().getResource("scenes/boardSettings.fxml")));
         window.setScene(boardSettings);
-
     }
 
     @FXML
-    private void highScoresTable(ActionEvent event) throws IOException {
-        Parent highScoreBoard = FXMLLoader.load(getClass().getResource("scenes/highScores.fxml"));
-        Scene highScoreScene = new Scene(highScoreBoard);
+    Button highScores;
 
-        Stage windowHighScores = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        windowHighScores.setTitle("High Scores");
-        windowHighScores.setScene(highScoreScene);
-        windowHighScores.show();
+    @FXML
+    private void highScoresTable() throws IOException {
+        Stage window;
+        Scene highScoreScene;
+
+        highScoreScene = gameSettings.getScene();
+
+        window = (Stage) highScoreScene.getWindow();
+
+        highScoreScene = new Scene(FXMLLoader.load(getClass().getResource("scenes/highScores.fxml")));
+        window.setScene(highScoreScene);
     }
 
     @FXML
