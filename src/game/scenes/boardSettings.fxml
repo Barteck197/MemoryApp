@@ -3,7 +3,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="center" hgap="10" prefHeight="300.0" prefWidth="400.0" stylesheets="@../css/stylesheet.css" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.Controller">
+<GridPane alignment="center" hgap="10" prefHeight="300.0" prefWidth="400.0"
+          stylesheets="@../css/stylesheet.css" vgap="10"
+          xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="game.MenuController">
 
     <Label fx:id="boardWindowTitle" text="Choose board dimensions:" GridPane.halignment="CENTER" GridPane.rowIndex="0"/>
 

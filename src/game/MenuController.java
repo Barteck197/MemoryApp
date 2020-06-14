@@ -1,5 +1,6 @@
 package game;
 
+import game.Card;
 import game.scenes.Board;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +18,7 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.IOException;
 
-public class Controller {
+public class MenuController {
 
     //tracing time
     static int seconds = 0;
@@ -61,17 +62,23 @@ public class Controller {
         t.start();
     }
 
+    @FXML
+    Button gameSettings;
 
     //creating scenes
     @FXML
     private void gameSettingsScene(ActionEvent event) throws IOException {
-        Parent boardSettings = FXMLLoader.load(getClass().getResource("scenes/boardSettings.fxml"));
-        Scene boardScene = new Scene(boardSettings);
 
-        Stage windowBoardParams = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        windowBoardParams.setTitle("Game parameters");
-        windowBoardParams.setScene(boardScene);
-        windowBoardParams.show();
+        Stage window;
+        Scene boardSettings;
+
+        boardSettings = gameSettings.getScene();
+
+        window = (Stage) boardSettings.getWindow();
+
+        boardSettings = new Scene(FXMLLoader.load(getClass().getResource("scenes/boardSettings.fxml")));
+        window.setScene(boardSettings);
+
     }
 
     @FXML
