@@ -9,7 +9,7 @@
     </center>
     <bottom>
         <HBox alignment="CENTER" prefHeight="50.0">
-            <Label text="time" />
+            <Label fx:id="appTime" text="time" />
         </HBox>
     </bottom>
 </BorderPane>
