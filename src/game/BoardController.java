@@ -3,7 +3,12 @@ package game;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class BoardController {
 
@@ -58,8 +63,16 @@ public class BoardController {
 
     }
 
-    public void exitWithKey(){
+    public void exitWithKey(KeyEvent ke) {
 
+        KeyCombination exitComb = new KeyCodeCombination(KeyCode.E, KeyCombination.CONTROL_DOWN, KeyCombination.ALT_DOWN);
+
+        if (exitComb.match(ke)) {
+            Stage stage = (Stage) gameBoard.getScene().getWindow();
+            stage.close();
+            state = false;
+            System.out.println("CTRL + ALT");
+        }
     }
 
     public static GridPane board(int rows, int columns) {

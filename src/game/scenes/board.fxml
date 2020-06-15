@@ -3,13 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.BoardController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.BoardController" onKeyPressed="#exitWithKey">
     <center>
-        <GridPane id="gameBoard" fx:id="gameBoard" />
+        <GridPane id="gameBoard" fx:id="gameBoard"/>
     </center>
     <bottom>
         <HBox alignment="CENTER" prefHeight="50.0">
-            <Label fx:id="appTime" text="time" />
+            <Label fx:id="appTime" text="time"/>
         </HBox>
     </bottom>
 </BorderPane>
