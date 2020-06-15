@@ -20,7 +20,6 @@ public class BoardSettingsController {
 
     @FXML
     private void startGame(ActionEvent event) throws IOException {
-
         if ((getColumns() * getRows()) % 2 == 0) {
             Parent boardSettings = FXMLLoader.load(getClass().getResource("scenes/board.fxml"));
             Scene boardScene = new Scene(boardSettings);
@@ -78,28 +77,4 @@ public class BoardSettingsController {
     public int getColumns() {
         return Integer.parseInt(columns.getText());
     }
-
-    //TODO input validation: rows x columns % 2 == 0
-
-    @FXML
-    private GridPane gameBoard;
-    private ImageIcon card;
-
-    public static GridPane board(int rows, int columns) {
-
-        GridPane board = new GridPane();
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-
-                Card card = new Card();
-
-                //TODO dodawanie grafiki karty
-                board.add(card, i, j);
-                GridPane.setMargin(card, new Insets(5));
-            }
-        }
-        return board;
-    }
-
 }

@@ -3,14 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="game.MenuController"
-          prefHeight="400.0" prefWidth="600.0"
-          alignment="CENTER">
-    <GridPane fx:id="gameBoard" id="gameBoard" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
-
-    <Label text="time" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-    <Button text="exit" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-
-</GridPane>
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.BoardController">
+    <center>
+        <GridPane id="gameBoard" fx:id="gameBoard" />
+    </center>
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="50.0">
+            <Label text="time" />
+        </HBox>
+    </bottom>
+</BorderPane>
