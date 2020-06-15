@@ -63,6 +63,7 @@ public class BoardController {
 
     }
 
+    //TODO exiting with keyboard shortcuts
     public void exitWithKey(KeyEvent ke) {
 
         KeyCombination exitComb = new KeyCodeCombination(KeyCode.E, KeyCombination.CONTROL_DOWN, KeyCombination.ALT_DOWN);
