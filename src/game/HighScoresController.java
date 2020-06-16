@@ -1,14 +1,31 @@
 package game;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class HighScoresController {
+
+    @FXML
+    ListView<Player> highScoresListView;
+
+    ObservableList<Player> resultList;
+
+    public void initialize(){
+        resultList = FXCollections.observableArrayList();
+
+        highScoresListView.setItems(resultList);
+    }
+
+
+
     @FXML
     Button backButton;
 
