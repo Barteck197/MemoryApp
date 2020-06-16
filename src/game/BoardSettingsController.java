@@ -15,15 +15,20 @@ import java.io.IOException;
 public class BoardSettingsController {
 
     @FXML
-    private void startGame(ActionEvent event) throws IOException {
+    private void startGame() throws IOException {
         if ((getColumns() * getRows()) % 2 == 0) {
-            Parent boardSettings = FXMLLoader.load(getClass().getResource("scenes/board.fxml"));
-            Scene boardScene = new Scene(boardSettings);
+            Stage window;
+            Scene board;
 
-            Stage windowBoardParams = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            windowBoardParams.setTitle("Game!!");
-            windowBoardParams.setScene(boardScene);
-            windowBoardParams.show();
+            board = backButton.getScene();
+
+            window = (Stage) board.getWindow();
+
+            board = new Scene(FXMLLoader.load(getClass().getResource("scenes/board.fxml")));
+            window.setScene(board);
+            window.setWidth(600);
+            window.setHeight(400);
+
         } else {
             alertWrongInput();
         }
