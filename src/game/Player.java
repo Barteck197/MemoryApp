@@ -27,4 +27,12 @@ public class Player {
     public void setPlayerResult(int playerResult) {
         this.playerResult = playerResult;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", playerResult=" + playerResult +
+                '}';
+    }
 }
