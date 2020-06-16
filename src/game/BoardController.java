@@ -3,6 +3,7 @@ package game;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -10,11 +11,13 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class BoardController {
 
@@ -67,24 +70,34 @@ public class BoardController {
 
 
     @FXML
-    GridPane gameBoard;
+    Pane gameBoard;
 
     public void initialize() {
 //        startTime();
+        gameBoard.setPrefHeight((rows * 25) + (rows - 1) * 5);
+        gameBoard.setPrefHeight((columns * 25) + (columns - 1) * 5);
 
+        int Hpos;
+        int Vpos = 10;
         for (int i = 0; i < rows; i++) {
+            Hpos = 10;
             for (int j = 0; j < columns; j++) {
-
-                Card card = new Card();
+                //TODO dodawanie grafiki karty
+//                Card card = new Card();
 
                 Rectangle card2 = new Rectangle();
                 card2.setFill(Color.BLACK);
+                card2.setHeight(20);
+                card2.setWidth(20);
 
+                card2.setLayoutX(Hpos);
+                card2.setLayoutY(Vpos);
 
-                //TODO dodawanie grafiki karty
-                gameBoard.add(card2, i, j);
-//                GridPane.setMargin(card, new Insets(5));
+                gameBoard.getChildren().add(card2);
+
+                Hpos += 25;
             }
+            Vpos += 25;
         }
     }
 
