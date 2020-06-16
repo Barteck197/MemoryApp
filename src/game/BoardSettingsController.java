@@ -16,7 +16,6 @@ public class BoardSettingsController {
     @FXML
     private void startGame() throws IOException {
         if ((getColumns() * getRows()) % 2 == 0) {
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("scenes/board.fxml"));
             Parent root = loader.load();
 
@@ -28,8 +27,6 @@ public class BoardSettingsController {
             window.setWidth(600);
             window.setHeight(400);
             window.show();
-
-
         } else {
             alertWrongInput();
         }

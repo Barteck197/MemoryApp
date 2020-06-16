@@ -10,6 +10,8 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -69,8 +71,21 @@ public class BoardController {
 
     public void initialize() {
 //        startTime();
-//        board(rows, columns);
 
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+
+                Card card = new Card();
+
+                Rectangle card2 = new Rectangle();
+                card2.setFill(Color.BLACK);
+
+
+                //TODO dodawanie grafiki karty
+                gameBoard.add(card2, i, j);
+//                GridPane.setMargin(card, new Insets(5));
+            }
+        }
     }
 
     //TODO exiting with keyboard shortcuts
@@ -92,7 +107,7 @@ public class BoardController {
         this.columns = columns;
     }
 
-    public static GridPane board(int rows, int columns) {
+    /*public static GridPane board(int rows, int columns) {
 
         GridPane board = new GridPane();
 
@@ -108,7 +123,7 @@ public class BoardController {
         }
         return board;
     }
-
+*/
 
     public void endGame() throws IOException {
         Stage window;
