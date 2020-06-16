@@ -1,15 +1,14 @@
 package game;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class BoardSettingsController {
@@ -17,17 +16,19 @@ public class BoardSettingsController {
     @FXML
     private void startGame() throws IOException {
         if ((getColumns() * getRows()) % 2 == 0) {
-            Stage window;
-            Scene board;
 
-            board = backButton.getScene();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("scenes/board.fxml"));
+            Parent root = loader.load();
 
-            window = (Stage) board.getWindow();
+            BoardController bc = loader.getController();
+            bc.setBoardDimensions(getRows(), getColumns());
 
-            board = new Scene(FXMLLoader.load(getClass().getResource("scenes/board.fxml")));
-            window.setScene(board);
+            Stage window = new Stage();
+            window.setScene(new Scene(root));
             window.setWidth(600);
             window.setHeight(400);
+            window.show();
+
 
         } else {
             alertWrongInput();
@@ -43,7 +44,6 @@ public class BoardSettingsController {
                 "\nIloczyn liczb wierszy i kolumn w planszy musi być liczbą parzystą.");
         al.show();
     }
-
 
     @FXML
     Button backButton;

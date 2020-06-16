@@ -21,6 +21,11 @@ public class BoardController {
     static int minutes = 0;
     static int hours = 0;
     static boolean state = true;
+
+    //board dimensions
+    private int rows;
+    private int columns;
+
     @FXML
     Label appTime;
 
@@ -64,6 +69,7 @@ public class BoardController {
 
     public void initialize() {
 //        startTime();
+//        board(rows, columns);
 
     }
 
@@ -78,6 +84,12 @@ public class BoardController {
             state = false;
             System.out.println("CTRL + ALT");
         }
+    }
+
+    //set board dimensions
+    public void setBoardDimensions(int rows, int columns) {
+        this.rows = rows;
+        this.columns = columns;
     }
 
     public static GridPane board(int rows, int columns) {
@@ -96,7 +108,6 @@ public class BoardController {
         }
         return board;
     }
-
 
 
     public void endGame() throws IOException {
