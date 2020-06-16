@@ -1,7 +1,9 @@
 package game;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -9,6 +11,8 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class BoardController {
 
@@ -59,7 +63,7 @@ public class BoardController {
     GridPane gameBoard;
 
     public void initialize() {
-        startTime();
+//        startTime();
 
     }
 
@@ -92,4 +96,21 @@ public class BoardController {
         }
         return board;
     }
+
+
+
+    public void endGame() throws IOException {
+        Stage window;
+        Scene menuScene;
+
+        menuScene = appTime.getScene();
+
+        window = (Stage) menuScene.getWindow();
+
+        menuScene = new Scene(FXMLLoader.load(getClass().getResource("scenes/saveScore.fxml")));
+        window.setScene(menuScene);
+        window.setWidth(600);
+        window.setHeight(400);
+    }
+
 }

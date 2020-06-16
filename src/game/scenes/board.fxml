@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.BoardController" onKeyPressed="#exitWithKey">
+<BorderPane prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="game.BoardController">
     <center>
         <GridPane id="gameBoard" fx:id="gameBoard"/>
     </center>
     <bottom>
         <HBox alignment="CENTER" prefHeight="50.0">
-            <Label fx:id="appTime" text="time"/>
+            <Label fx:id="appTime" text="time">
+                <HBox.margin>
+                    <Insets right="10.0"/>
+                </HBox.margin>
+            </Label>
+            <Button text="save" onMouseClicked="#endGame"/>
         </HBox>
     </bottom>
 </BorderPane>
