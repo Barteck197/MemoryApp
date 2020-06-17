@@ -27,6 +27,9 @@ public class BoardController {
     private int rows;
     private int columns;
 
+    //score
+    static int score = 0;
+
     @FXML
     Label appTime;
 
@@ -147,5 +150,4 @@ public class BoardController {
         window.setWidth(600);
         window.setHeight(400);
     }
-
 }

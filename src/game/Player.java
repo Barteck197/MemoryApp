@@ -3,7 +3,7 @@ package game;
 public class Player {
     private String name;
     private int playerResult;
-    static  int id;
+    static int id;
 
     public Player(String name, int playerResult) {
         this.name = name;
@@ -16,6 +16,7 @@ public class Player {
     public int getPlayerResult() {
         return playerResult;
     }
+
     public String getName() {
         return name;
     }
@@ -24,15 +25,13 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
+
     public void setPlayerResult(int playerResult) {
         this.playerResult = playerResult;
     }
 
     @Override
     public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", playerResult=" + playerResult +
-                '}';
+        return id + ";" + name + ";" + playerResult;
     }
 }

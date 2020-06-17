@@ -8,7 +8,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-public class Card extends StackPane {
+import java.io.Serializable;
+
+public class Card extends StackPane implements Serializable {
     static int id = 1;
     private int clickCount = 2;
     private Card selected = null;
@@ -48,7 +50,7 @@ public class Card extends StackPane {
 
                     selected = null;
                     clickCount = 2;
-                });
+                    });
             }
         });
         close();
