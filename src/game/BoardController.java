@@ -33,6 +33,7 @@ public class BoardController implements Exitable {
     @FXML
     Label appTime;
 
+    //TODO tracing time
     @FXML
     private void startTime() {
         state = true;
@@ -76,6 +77,7 @@ public class BoardController implements Exitable {
         gameBoard.setPrefHeight((rows * 25) + (rows - 1) * 5);
         gameBoard.setPrefHeight((columns * 25) + (columns - 1) * 5);
 
+        //TODO wyświetlanie kart
         int Hpos;
         int Vpos = 10;
         for (int i = 0; i < rows; i++) {

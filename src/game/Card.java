@@ -11,6 +11,7 @@ import javafx.util.Duration;
 import java.io.Serializable;
 
 public class Card extends StackPane implements Serializable {
+    //TODO implementacja i zrozumienie mechaniki
     static int id = 1;
     private int clickCount = 2;
     private Card selected = null;
