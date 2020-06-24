@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MenuController implements Exitable{
+public class MenuController implements Exitable {
 
     @FXML
     Button gameSettings;

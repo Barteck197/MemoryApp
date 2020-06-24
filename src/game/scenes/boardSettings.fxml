@@ -22,6 +22,6 @@
 
     <Button fx:id="backButton" onAction="#backToMenu" text="Back" GridPane.halignment="CENTER" prefWidth="100" GridPane.rowIndex="3"/>
 
-    <Button fx:constant=""
+    <Button onAction="#exitApp" text="Exit" GridPane.halignment="CENTER" prefWidth="100" GridPane.rowIndex="4"/>
 
 </GridPane>

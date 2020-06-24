@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class ScoreSaverController implements Exitable{
 
+    //TODO result mechanics
     @FXML
     Button saveResult;
 
