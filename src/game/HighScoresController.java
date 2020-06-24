@@ -1,6 +1,5 @@
 package game;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,6 +22,11 @@ public class HighScoresController implements Exitable {
     ObservableList<Player> resultList;
 
     public void initialize() throws FileNotFoundException {
+        //TODO clean up the view for the user
+        highScoresListView.setItems(listOldResults());
+    }
+
+    public ObservableList<Player> listOldResults() throws FileNotFoundException {
         resultList = FXCollections.observableArrayList();
 
         //TODO check if file exists
@@ -44,10 +48,9 @@ public class HighScoresController implements Exitable {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        //TODO clean up the view for the user
-        highScoresListView.setItems(resultList);
-    }
 
+        return resultList;
+    }
 
     @FXML
     Button backButton;

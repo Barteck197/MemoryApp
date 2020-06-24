@@ -5,12 +5,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 public class ScoreSaverController implements Exitable {
+
+    //Highscores are kept in global observableList
 
     //TODO result mechanics
     @FXML
@@ -22,8 +23,6 @@ public class ScoreSaverController implements Exitable {
 
     public void saveResult() throws IOException {
         Player pl = new Player(playerName.getText(), 20);
-
-        //TODO add to new file instead of creating new one
 
         FileOutputStream fs;
         ObjectOutputStream os = null;
