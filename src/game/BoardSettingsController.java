@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class BoardSettingsController {
+public class BoardSettingsController implements Exitable {
 
     @FXML
     private void startGame() throws IOException {
@@ -74,5 +74,11 @@ public class BoardSettingsController {
 
     public int getColumns() {
         return Integer.parseInt(columns.getText());
+    }
+
+    @Override
+    public void exitApp() {
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.close();
     }
 }

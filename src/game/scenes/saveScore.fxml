@@ -16,5 +16,6 @@
     <Label fx:id="title" text="Enter your name" GridPane.rowIndex="0" GridPane.halignment="CENTER"/>
     <TextField fx:id="playerName" prefWidth="100" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
     <Button fx:id="saveResult" text="SUBMIT" GridPane.rowIndex="2" GridPane.halignment="CENTER"/>
+    <Button text="EXIT" GridPane.rowIndex="3" GridPane.halignment="CENTER" onAction="#exitApp"/>
 
 </GridPane>

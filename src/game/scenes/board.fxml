@@ -18,6 +18,7 @@
                 </HBox.margin>
             </Label>
             <Button text="save" onMouseClicked="#endGame"/>
+            <Button text="exit" onMouseClicked="#exitApp" />
         </HBox>
     </bottom>
 </BorderPane>

@@ -20,7 +20,7 @@
 
     <Button fx:id="highScores" onAction="#highScoresTable" prefHeight="30.0" prefWidth="100.0" text="High Scores" GridPane.halignment="CENTER" GridPane.rowIndex="2"/>
 
-    <Button onAction="#exitGame" prefHeight="30.0" prefWidth="100.0" text="Exit" fx:id="closeButton"
+    <Button onAction="#exitApp" prefHeight="30.0" prefWidth="100.0" text="Exit" fx:id="closeButton"
             GridPane.rowIndex="3" GridPane.halignment="CENTER"/>
 
 </GridPane>

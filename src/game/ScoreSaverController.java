@@ -3,8 +3,11 @@ package game;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-public class ScoreSaverController {
+import java.io.IOException;
+
+public class ScoreSaverController implements Exitable{
 
     @FXML
     Button saveResult;
@@ -16,5 +19,11 @@ public class ScoreSaverController {
     //TODO communication with object - player
     public void saveResult() {
         new Player(playerName.getText(), 20);
+    }
+
+    @Override
+    public void exitApp() {
+        Stage stage = (Stage) saveResult.getScene().getWindow();
+        stage.close();
     }
 }

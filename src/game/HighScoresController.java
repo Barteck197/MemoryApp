@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HighScoresController {
+public class HighScoresController implements Exitable{
 
     @FXML
     ListView<Player> highScoresListView;
@@ -42,5 +42,11 @@ public class HighScoresController {
         window.setScene(menuScene);
         window.setWidth(600);
         window.setHeight(400);
+    }
+
+    @Override
+    public void exitApp() {
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.close();
     }
 }

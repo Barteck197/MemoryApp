@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MenuController {
+public class MenuController implements Exitable{
 
     @FXML
     Button gameSettings;
@@ -48,6 +48,11 @@ public class MenuController {
 
     @FXML
     private void exitGame() {
+
+    }
+
+    @Override
+    public void exitApp() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }

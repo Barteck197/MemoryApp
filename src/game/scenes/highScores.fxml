@@ -17,7 +17,7 @@
                     <Insets right="20.0"/>
                 </HBox.margin>
             </Button>
-            <Button prefWidth="80" text="Exit"/>
+            <Button prefWidth="80" text="Exit" onAction="#exitApp"/>
         </HBox>
     </bottom>
 </BorderPane>

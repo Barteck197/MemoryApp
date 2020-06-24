@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class BoardController {
+public class BoardController implements Exitable {
 
     //tracing time
     static int seconds = 0;
@@ -149,5 +149,11 @@ public class BoardController {
         window.setScene(menuScene);
         window.setWidth(600);
         window.setHeight(400);
+    }
+
+    @Override
+    public void exitApp() {
+        Stage stage = (Stage) appTime.getScene().getWindow();
+        stage.close();
     }
 }
