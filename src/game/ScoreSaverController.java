@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-public class ScoreSaverController implements Exitable{
+public class ScoreSaverController implements Exitable {
 
     //TODO result mechanics
     @FXML
@@ -20,16 +20,27 @@ public class ScoreSaverController implements Exitable{
     TextField playerName;
 
 
-    //TODO communication with object - player
     public void saveResult() throws IOException {
         Player pl = new Player(playerName.getText(), 20);
 
-        FileOutputStream fs = new FileOutputStream("highScores.txt");
-        ObjectOutputStream os = new ObjectOutputStream(fs);
+        //TODO add to new file instead of creating new one
 
-        os.writeObject(pl);
-        os.flush();
-        os.close();
+        FileOutputStream fs;
+        ObjectOutputStream os = null;
+
+        try {
+            fs = new FileOutputStream("highScores.txt", true);
+            os = new ObjectOutputStream(fs);
+            os.writeObject(pl);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (os != null) {
+                os.close();
+            }
+        }
+
+
     }
 
     @Override
