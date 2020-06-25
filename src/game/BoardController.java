@@ -97,11 +97,19 @@ public class BoardController implements Exitable {
     }
 
 
+    //TODO exiting with keyboard shortcuts
+    //set board dimensions
+
+    public void setBoardDimensions(int rows, int columns) {
+        this.rows = rows;
+        this.columns = columns;
+    }
+
     @FXML
     Pane gameBoard;
 
     public void initialize() {
-        startTime();
+//        startTime();
         gameBoard.setPrefHeight((rows * 25) + (rows - 1) * 5);
         gameBoard.setPrefHeight((columns * 25) + (columns - 1) * 5);
 
@@ -130,7 +138,6 @@ public class BoardController implements Exitable {
         }
     }
 
-    //TODO exiting with keyboard shortcuts
     public void exitWithKey(KeyEvent ke) {
 
         KeyCombination exitComb = new KeyCodeCombination(KeyCode.E, KeyCombination.CONTROL_DOWN, KeyCombination.ALT_DOWN);
@@ -143,12 +150,6 @@ public class BoardController implements Exitable {
         }
     }
 
-    //set board dimensions
-    public void setBoardDimensions(int rows, int columns) {
-        this.rows = rows;
-        this.columns = columns;
-    }
-
     /*public static GridPane board(int rows, int columns) {
 
         GridPane board = new GridPane();
@@ -158,7 +159,6 @@ public class BoardController implements Exitable {
 
                 Card card = new Card();
 
-                //TODO dodawanie grafiki karty
                 board.add(card, i, j);
                 GridPane.setMargin(card, new Insets(5));
             }
