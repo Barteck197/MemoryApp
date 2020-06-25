@@ -1,9 +1,9 @@
 package game;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,13 +32,40 @@ public class BoardController implements Exitable {
     static int score = 0;
 
     @FXML
-    Label appTime;
+    Text appTime;
 
     //TODO tracing time
     @FXML
     private void startTime() {
         state = true;
-        Thread t = new Thread() {
+
+        Platform.runLater(() -> {
+            while (state) {
+                try {
+                    Thread.sleep(1000);
+
+                    if (seconds >= 60) {
+                        seconds = 0;
+                        minutes++;
+                    }
+                    if (minutes >= 60) {
+                        seconds = 0;
+                        minutes = 0;
+                        hours++;
+                    }
+
+                    seconds++;
+
+                    appTime.setText(minutes + " : " + seconds);
+                    System.out.println(hours + ":" + minutes + ":" + seconds);
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        /*Thread t = new Thread() {
             @Override
             public void run() {
                 while (state) {
@@ -65,7 +93,7 @@ public class BoardController implements Exitable {
                 }
             }
         };
-        t.start();
+        t.start();*/
     }
 
 
@@ -73,7 +101,7 @@ public class BoardController implements Exitable {
     Pane gameBoard;
 
     public void initialize() {
-//        startTime();
+        startTime();
         gameBoard.setPrefHeight((rows * 25) + (rows - 1) * 5);
         gameBoard.setPrefHeight((columns * 25) + (columns - 1) * 5);
 
@@ -140,6 +168,7 @@ public class BoardController implements Exitable {
 */
 
     public void endGame() throws IOException {
+        state = false;
         Stage window;
         Scene menuScene;
 
@@ -155,6 +184,7 @@ public class BoardController implements Exitable {
 
     @Override
     public void exitApp() {
+        state = false;
         Stage stage = (Stage) appTime.getScene().getWindow();
         stage.close();
     }

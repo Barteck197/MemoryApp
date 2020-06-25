@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 <BorderPane prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="game.BoardController">
@@ -12,13 +14,13 @@
     </center>
     <bottom>
         <HBox alignment="CENTER" prefHeight="50.0">
-            <Label fx:id="appTime" text="time">
+            <Text fx:id="appTime" text="00:00">
                 <HBox.margin>
                     <Insets right="10.0"/>
                 </HBox.margin>
-            </Label>
+            </Text>
             <Button text="save" onMouseClicked="#endGame"/>
-            <Button text="exit" onMouseClicked="#exitApp" />
+            <Button text="exit" onMouseClicked="#exitApp"/>
         </HBox>
     </bottom>
 </BorderPane>
