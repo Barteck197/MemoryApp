@@ -9,10 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 
 public class HighScoresController implements Exitable {
 
@@ -30,26 +27,30 @@ public class HighScoresController implements Exitable {
         resultList = FXCollections.observableArrayList();
 
         //TODO check if file exists
-        FileInputStream oldResults = new FileInputStream("highScores.txt");
+        File file = new File("highScores.txt");
+        if (file.exists()) {
+            FileInputStream oldResults = new FileInputStream(file);
 
-        boolean proceed = true;
+            boolean proceed = true;
 
-        try {
-            ObjectInputStream input = new ObjectInputStream(oldResults);
-            while (proceed) {
-                //TODO deserialize multiple objects
-                Player pl = (Player) input.readObject();
-                if (pl != null) {
-                    resultList.add(pl);
-                } else {
-                    proceed = false;
+            try {
+                ObjectInputStream input = new ObjectInputStream(oldResults);
+                while (proceed) {
+                    //TODO deserialize multiple objects
+                    Player pl = (Player) input.readObject();
+                    if (pl != null) {
+                        resultList.add(pl);
+                    } else {
+                        proceed = false;
+                    }
                 }
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
             }
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            return resultList;
+        } else {
+            return null;
         }
-
-        return resultList;
     }
 
     @FXML

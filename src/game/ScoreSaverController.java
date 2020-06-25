@@ -11,7 +11,7 @@ import java.io.ObjectOutputStream;
 
 public class ScoreSaverController implements Exitable {
 
-    //Highscores are kept in global observableList
+    //TODO Highscores are kept in global observableList
 
     //TODO result mechanics
     @FXML
@@ -19,7 +19,6 @@ public class ScoreSaverController implements Exitable {
 
     @FXML
     TextField playerName;
-
 
     public void saveResult() throws IOException {
         Player pl = new Player(playerName.getText(), 20);
