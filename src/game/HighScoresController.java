@@ -22,11 +22,11 @@ public class HighScoresController implements Exitable {
     //global high score list
     static ObservableList<Player> resultList;
 
+    static boolean initialized = false;
 
     public void listOldResults() throws FileNotFoundException {
         File file = new File("highScores.txt");
-        //TODO deserialize observable list
-        if (file.exists()) {
+        if (file.exists() && !initialized) {
             FileInputStream oldResults = new FileInputStream(file);
             try {
                 ObjectInputStream input = new ObjectInputStream(oldResults);
@@ -44,8 +44,9 @@ public class HighScoresController implements Exitable {
         //FIXME
         // - clean up the view for the user
         // - add scroll on too many results
-        listOldResults();
         highScoresListView.setItems(resultList);
+        listOldResults();
+        initialized = true;
     }
 
     @FXML

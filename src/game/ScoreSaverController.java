@@ -37,18 +37,17 @@ public class ScoreSaverController implements Exitable {
 
             File resultFile = new File("highScores.txt");
 
-            if (!resultFile.exists()){
+            if (!resultFile.exists()) {
                 resultFile.createNewFile();
             }
 
-//            FileOutputStream fs;
+            FileOutputStream fs;
             ObjectOutputStream os = null;
 
             try {
-//                fs = new FileOutputStream(resultFile, true);
-                os = new ObjectOutputStream(new FileOutputStream(resultFile, true));
+                fs = new FileOutputStream(resultFile, true);
+                os = new ObjectOutputStream(fs);
                 os.writeObject(resultListArray);
-//                os.writeObject(resultList);
                 os.flush();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -64,7 +63,7 @@ public class ScoreSaverController implements Exitable {
 
     }
 
-    public void cleanUserInput(){
+    public void cleanUserInput() {
         playerName.setText("");
         Alert al = new Alert(Alert.AlertType.CONFIRMATION);
 
