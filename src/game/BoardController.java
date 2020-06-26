@@ -22,14 +22,14 @@ public class BoardController implements Exitable {
     static int seconds = 0;
     static int minutes = 0;
     static int hours = 0;
-    static boolean state = true;
+    static boolean state;
 
     //board dimensions
     private int rows;
     private int columns;
 
     //score
-    static int score = 0;
+    static int score = 100;
 
     @FXML
     Text appTime;
@@ -43,7 +43,7 @@ public class BoardController implements Exitable {
             while (state) {
                 try {
                     Thread.sleep(1000);
-
+                    /*
                     if (seconds >= 60) {
                         seconds = 0;
                         minutes++;
@@ -53,11 +53,11 @@ public class BoardController implements Exitable {
                         minutes = 0;
                         hours++;
                     }
-
+                    */
                     seconds++;
 
-                    appTime.setText(minutes + " : " + seconds);
-                    System.out.println(hours + ":" + minutes + ":" + seconds);
+                    appTime.setText(String.valueOf(seconds));
+                    System.out.println(seconds);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -176,7 +176,13 @@ public class BoardController implements Exitable {
 
         window = (Stage) menuScene.getWindow();
 
-        menuScene = new Scene(FXMLLoader.load(getClass().getResource("scenes/saveScore.fxml")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("scenes/saveScore.fxml"));
+
+        ScoreSaverController sc = loader.getController();
+        sc.setPlayerResult(score);
+
+
+        menuScene = new Scene(loader.load());
         window.setScene(menuScene);
         window.setWidth(600);
         window.setHeight(400);

@@ -100,29 +100,33 @@ public class BoardSettingsController implements Exitable {
 
     //walidacja inputu użytkownika
     public void setNrOfRows() {
+        nrOfRows = Integer.parseInt(rows.getText());
         //TODO poprawna konfiguracja regexów
-        if (rows.getText().matches("/d+")) {
+/*        if (rows.getText().matches("/d+")) {
             if (rows.getText().matches("\b([1-9]|1[0-6])\b")) {
                 nrOfRows = Integer.parseInt(rows.getText());
             } else {
-//                alertWrongNumber();
+                alertWrongNumber();
             }
         } else {
-//            alertInputNotNumber();
+            alertInputNotNumber();
         }
+*/
     }
 
     public void setNrOfColumns() {
-        //TODO poprawna konfiguracja regexów
+        nrOfColumns = Integer.parseInt(columns.getText());
+/*        //TODO poprawna konfiguracja regexów
         if (rows.getText().matches("/d+")) {
             if (rows.getText().matches("\b([1-9]|1[0-6])\b")) {
                 nrOfColumns = Integer.parseInt(columns.getText());
             } else {
-//                alertWrongNumber();
+                alertWrongNumber();
             }
         } else {
-//            alertInputNotNumber();
+            alertInputNotNumber();
         }
+ */
     }
 
     @Override
