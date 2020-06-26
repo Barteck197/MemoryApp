@@ -29,7 +29,7 @@ public class BoardController implements Exitable {
     private int columns;
 
     //score
-    static int score = 100;
+    static int score;
 
     @FXML
     Text appTime;
@@ -109,6 +109,7 @@ public class BoardController implements Exitable {
     Pane gameBoard;
 
     public void initialize() {
+        score = 100;
 //        startTime();
         gameBoard.setPrefHeight((rows * 25) + (rows - 1) * 5);
         gameBoard.setPrefHeight((columns * 25) + (columns - 1) * 5);
@@ -179,7 +180,7 @@ public class BoardController implements Exitable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("scenes/saveScore.fxml"));
 
         ScoreSaverController sc = loader.getController();
-        sc.setPlayerResult(score);
+//        sc.setPlayerResult(score);
 
 
         menuScene = new Scene(loader.load());

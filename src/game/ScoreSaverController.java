@@ -45,6 +45,8 @@ public class ScoreSaverController implements Exitable {
                     os.close();
                 }
             }
+            cleanUserInput();
+            exitApp();
         }
 
 
@@ -52,6 +54,15 @@ public class ScoreSaverController implements Exitable {
 
     public void setPlayerResult(int result){
         this.playerResult = result;
+    }
+
+    public void cleanUserInput(){
+        playerName.setText("");
+        Alert al = new Alert(Alert.AlertType.CONFIRMATION);
+
+        al.setTitle("OK");
+        al.setHeaderText("Dziękujemy, zapisano");
+        al.show();
     }
 
     public void alertWrongInput() {
