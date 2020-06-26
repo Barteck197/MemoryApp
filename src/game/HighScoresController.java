@@ -1,5 +1,6 @@
 package game;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,47 +10,39 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.*;
-
-import static game.ScoreSaverController.resultList;
+import java.util.ArrayList;
 
 public class HighScoresController implements Exitable {
+
+    File file = new File("highScores.txt");
 
     @FXML
     ListView<Player> highScoresListView;
 
     public void initialize() throws FileNotFoundException {
-        //TODO clean up the view for the user
-        highScoresListView.setItems(listOldResults());
-
-        //TODO add scroll on too many results
+        //FIXME
+        // - clean up the view for the user
+        // add scroll on too many results
+        highScoresListView.setItems(listOldResults(file));
     }
 
-    public ObservableList<Player> listOldResults() throws FileNotFoundException {
-
-        File file = new File("highScores.txt");
+    public ObservableList<Player> listOldResults(File file) throws FileNotFoundException {
+        //TODO deserialize observable list
         if (file.exists()) {
             FileInputStream oldResults = new FileInputStream(file);
 
-            boolean proceed = true;
-
             try {
                 ObjectInputStream input = new ObjectInputStream(oldResults);
-                while (proceed) {
-                    //TODO deserialize more than one object
-                    Player pl = (Player) input.readObject();
-                    if (pl != null) {
-                        resultList.add(pl);
-                    } else {
-                        proceed = false;
-                    }
-                }
+                ArrayList<Player> oldPlayers = (ArrayList<Player>) input.readObject();
+
+                return FXCollections.observableArrayList(oldPlayers);
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            return resultList;
         } else {
-            return null;
+            return FXCollections.emptyObservableList();
         }
+        return FXCollections.emptyObservableList();
     }
 
     @FXML
