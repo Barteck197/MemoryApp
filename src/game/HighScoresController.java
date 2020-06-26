@@ -21,12 +21,13 @@ public class HighScoresController implements Exitable {
     public void initialize() throws FileNotFoundException {
         //TODO clean up the view for the user
         highScoresListView.setItems(listOldResults());
+
+        //TODO add scroll on too many results
     }
 
     public ObservableList<Player> listOldResults() throws FileNotFoundException {
         resultList = FXCollections.observableArrayList();
 
-        //TODO check if file exists
         File file = new File("highScores.txt");
         if (file.exists()) {
             FileInputStream oldResults = new FileInputStream(file);
@@ -36,7 +37,7 @@ public class HighScoresController implements Exitable {
             try {
                 ObjectInputStream input = new ObjectInputStream(oldResults);
                 while (proceed) {
-                    //TODO deserialize multiple objects
+                    //TODO deserialize more than one object
                     Player pl = (Player) input.readObject();
                     if (pl != null) {
                         resultList.add(pl);
