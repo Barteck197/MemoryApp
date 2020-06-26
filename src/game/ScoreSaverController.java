@@ -11,15 +11,14 @@ import javafx.stage.Stage;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import static game.BoardController.score;
 
 public class ScoreSaverController implements Exitable {
 
-    //TODO Highscores are kept in global observableList
-
-    //TODO result mechanics
-    private int playerResult;
+    //FIXME result mechanics:
+    // - serialize list instead of single object
 
     @FXML
     Button saveResult;
@@ -47,7 +46,8 @@ public class ScoreSaverController implements Exitable {
             try {
                 fs = new FileOutputStream("highScores.txt", true);
                 os = new ObjectOutputStream(fs);
-                os.writeObject(resultList);
+                os.writeObject(new ArrayList<>(resultList));
+//                os.writeObject(resultList);
                 os.flush();
             } catch (Exception e) {
                 e.printStackTrace();
