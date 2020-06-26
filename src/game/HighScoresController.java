@@ -1,6 +1,5 @@
 package game;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,12 +10,12 @@ import javafx.stage.Stage;
 
 import java.io.*;
 
+import static game.ScoreSaverController.resultList;
+
 public class HighScoresController implements Exitable {
 
     @FXML
     ListView<Player> highScoresListView;
-
-    ObservableList<Player> resultList;
 
     public void initialize() throws FileNotFoundException {
         //TODO clean up the view for the user
@@ -26,7 +25,6 @@ public class HighScoresController implements Exitable {
     }
 
     public ObservableList<Player> listOldResults() throws FileNotFoundException {
-        resultList = FXCollections.observableArrayList();
 
         File file = new File("highScores.txt");
         if (file.exists()) {

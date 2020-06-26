@@ -1,5 +1,7 @@
 package game;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -25,12 +27,19 @@ public class ScoreSaverController implements Exitable {
     @FXML
     TextField playerName;
 
+    //global high score list
+    static ObservableList<Player> resultList;
+
     public void saveResult() throws IOException {
+        resultList = FXCollections.observableArrayList();
 
         if (playerName.getText().equals("")) {
             alertWrongInput();
         } else {
             Player pl = new Player(playerName.getText(), score);
+
+            //adding player to global high score list
+            resultList.add(pl);
 
             FileOutputStream fs;
             ObjectOutputStream os = null;
@@ -38,7 +47,7 @@ public class ScoreSaverController implements Exitable {
             try {
                 fs = new FileOutputStream("highScores.txt", true);
                 os = new ObjectOutputStream(fs);
-                os.writeObject(pl);
+                os.writeObject(resultList);
                 os.flush();
             } catch (Exception e) {
                 e.printStackTrace();
