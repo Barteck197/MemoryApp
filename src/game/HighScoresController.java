@@ -19,8 +19,9 @@ public class HighScoresController implements Exitable {
     @FXML
     ListView<Player> highScoresListView;
 
-    //global high score list
+    //global high score list - to be displayed in the window
     static ObservableList<Player> resultList;
+    //TODO sorting list by score
 
     static boolean initialized = false;
 
@@ -44,8 +45,9 @@ public class HighScoresController implements Exitable {
         //FIXME
         // - clean up the view for the user
         // - add scroll on too many results
-        highScoresListView.setItems(resultList);
+        resultListArray.sort(new PlayerSorter());
         listOldResults();
+        highScoresListView.setItems(resultList);
         initialized = true;
     }
 

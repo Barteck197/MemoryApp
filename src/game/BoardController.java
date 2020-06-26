@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static game.BoardSettingsController.nrOfColumns;
+import static game.BoardSettingsController.nrOfRows;
+
 public class BoardController implements Exitable {
 
     //tracing time
@@ -23,10 +26,6 @@ public class BoardController implements Exitable {
     static int minutes = 0;
     static int hours = 0;
     static boolean state;
-
-    //board dimensions
-    private int rows;
-    private int columns;
 
     //score
     static int score;
@@ -100,26 +99,21 @@ public class BoardController implements Exitable {
     //TODO exiting with keyboard shortcuts
     //set board dimensions
 
-    public void setBoardDimensions(int rows, int columns) {
-        this.rows = rows;
-        this.columns = columns;
-    }
-
     @FXML
     Pane gameBoard;
 
     public void initialize() {
-        score = 100;
+        score = 10 * nrOfRows * nrOfColumns;
 //        startTime();
-        gameBoard.setPrefHeight((rows * 25) + (rows - 1) * 5);
-        gameBoard.setPrefHeight((columns * 25) + (columns - 1) * 5);
+        gameBoard.setPrefHeight((nrOfRows * 25) + (nrOfRows - 1) * 5);
+        gameBoard.setPrefHeight((nrOfColumns * 25) + (nrOfColumns - 1) * 5);
 
         //TODO wyświetlanie kart
         int Hpos;
         int Vpos = 10;
-        for (int i = 0; i < rows; i++) {
+        for (int i = 0; i < nrOfRows; i++) {
             Hpos = 10;
-            for (int j = 0; j < columns; j++) {
+            for (int j = 0; j < nrOfColumns; j++) {
                 //TODO dodawanie grafiki karty
 //                Card card = new Card();
 
@@ -139,6 +133,7 @@ public class BoardController implements Exitable {
         }
     }
 
+    //TODO exiting with key combination
     public void exitWithKey(KeyEvent ke) {
 
         KeyCombination exitComb = new KeyCodeCombination(KeyCode.E, KeyCombination.CONTROL_DOWN, KeyCombination.ALT_DOWN);

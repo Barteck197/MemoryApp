@@ -23,8 +23,8 @@ public class BoardSettingsController implements Exitable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("scenes/board.fxml"));
             Parent root = loader.load();
 
-            BoardController bc = loader.getController();
-            bc.setBoardDimensions(nrOfRows, nrOfColumns);
+//            BoardController bc = loader.getController();
+//            bc.setBoardDimensions(nrOfRows, nrOfColumns);
 
             Stage window = new Stage();
             window.setScene(new Scene(root));
@@ -36,6 +36,8 @@ public class BoardSettingsController implements Exitable {
         }
     }
 
+
+    //TODO walidacja "start" bez podanych wymiarów planszy
     public void alertWrongInput() {
         Alert al = new Alert(Alert.AlertType.WARNING);
 
@@ -94,8 +96,8 @@ public class BoardSettingsController implements Exitable {
     @FXML
     TextField columns;
 
-    private int nrOfRows;
-    private int nrOfColumns;
+    public static int nrOfRows;
+    public static int nrOfColumns;
 
 
     //walidacja inputu użytkownika
