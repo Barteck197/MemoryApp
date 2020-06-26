@@ -23,9 +23,6 @@ public class BoardSettingsController implements Exitable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("scenes/board.fxml"));
             Parent root = loader.load();
 
-//            BoardController bc = loader.getController();
-//            bc.setBoardDimensions(nrOfRows, nrOfColumns);
-
             Stage window = new Stage();
             window.setScene(new Scene(root));
             window.setWidth(600);
@@ -99,12 +96,16 @@ public class BoardSettingsController implements Exitable {
     public static int nrOfRows;
     public static int nrOfColumns;
 
-
     //walidacja inputu użytkownika
     public void setNrOfRows() {
-        nrOfRows = Integer.parseInt(rows.getText());
+        if (rows.getText().equals("")) {
+            alertInputNotNumber();
+        } else {
+            nrOfRows = Integer.parseInt(rows.getText());
+        }
+
         //TODO poprawna konfiguracja regexów
-/*        if (rows.getText().matches("/d+")) {
+        /*if (rows.getText().matches("/d+")) {
             if (rows.getText().matches("\b([1-9]|1[0-6])\b")) {
                 nrOfRows = Integer.parseInt(rows.getText());
             } else {
@@ -112,13 +113,18 @@ public class BoardSettingsController implements Exitable {
             }
         } else {
             alertInputNotNumber();
-        }
-*/
+        }*/
     }
 
     public void setNrOfColumns() {
-        nrOfColumns = Integer.parseInt(columns.getText());
-/*        //TODO poprawna konfiguracja regexów
+        if (columns.getText().equals("")) {
+            alertInputNotNumber();
+        } else {
+            nrOfColumns = Integer.parseInt(columns.getText());
+        }
+
+        //TODO poprawna konfiguracja regexów
+        /*
         if (rows.getText().matches("/d+")) {
             if (rows.getText().matches("\b([1-9]|1[0-6])\b")) {
                 nrOfColumns = Integer.parseInt(columns.getText());
@@ -128,7 +134,7 @@ public class BoardSettingsController implements Exitable {
         } else {
             alertInputNotNumber();
         }
- */
+        */
     }
 
     @Override
