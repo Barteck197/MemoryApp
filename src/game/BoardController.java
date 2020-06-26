@@ -179,10 +179,6 @@ public class BoardController implements Exitable {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("scenes/saveScore.fxml"));
 
-        ScoreSaverController sc = loader.getController();
-//        sc.setPlayerResult(score);
-
-
         menuScene = new Scene(loader.load());
         window.setScene(menuScene);
         window.setWidth(600);

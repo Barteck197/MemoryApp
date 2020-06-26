@@ -10,6 +10,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
+import static game.BoardController.score;
+
 public class ScoreSaverController implements Exitable {
 
     //TODO Highscores are kept in global observableList
@@ -28,7 +30,7 @@ public class ScoreSaverController implements Exitable {
         if (playerName.getText().equals("")) {
             alertWrongInput();
         } else {
-            Player pl = new Player(playerName.getText(), playerResult);
+            Player pl = new Player(playerName.getText(), score);
 
             FileOutputStream fs;
             ObjectOutputStream os = null;
@@ -50,10 +52,6 @@ public class ScoreSaverController implements Exitable {
         }
 
 
-    }
-
-    public void setPlayerResult(int result){
-        this.playerResult = result;
     }
 
     public void cleanUserInput(){
