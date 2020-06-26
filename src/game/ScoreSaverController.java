@@ -56,8 +56,6 @@ public class ScoreSaverController implements Exitable {
             cleanUserInput();
             exitApp();
         }
-
-
     }
 
     public void cleanUserInput() {
