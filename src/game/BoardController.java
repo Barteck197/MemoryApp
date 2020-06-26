@@ -95,10 +95,6 @@ public class BoardController implements Exitable {
         t.start();*/
     }
 
-
-    //TODO exiting with keyboard shortcuts
-    //set board dimensions
-
     @FXML
     Pane gameBoard;
 

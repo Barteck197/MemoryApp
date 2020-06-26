@@ -16,9 +16,6 @@ import static game.MenuController.resultListArray;
 
 public class ScoreSaverController implements Exitable {
 
-    //FIXME result mechanics:
-    // - serialize list instead of single object
-
     @FXML
     Button saveResult;
 

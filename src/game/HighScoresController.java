@@ -21,7 +21,6 @@ public class HighScoresController implements Exitable {
 
     //global high score list - to be displayed in the window
     static ObservableList<Player> resultList;
-    //TODO sorting list by score
 
     static boolean initialized = false;
 
