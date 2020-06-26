@@ -12,37 +12,40 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.util.ArrayList;
 
-public class HighScoresController implements Exitable {
+import static game.MenuController.resultListArray;
 
-    File file = new File("highScores.txt");
+public class HighScoresController implements Exitable {
 
     @FXML
     ListView<Player> highScoresListView;
 
-    public void initialize() throws FileNotFoundException {
-        //FIXME
-        // - clean up the view for the user
-        // add scroll on too many results
-        highScoresListView.setItems(listOldResults(file));
-    }
+    //global high score list
+    static ObservableList<Player> resultList;
 
-    public ObservableList<Player> listOldResults(File file) throws FileNotFoundException {
+
+    public void listOldResults() throws FileNotFoundException {
+        File file = new File("highScores.txt");
         //TODO deserialize observable list
         if (file.exists()) {
             FileInputStream oldResults = new FileInputStream(file);
-
             try {
                 ObjectInputStream input = new ObjectInputStream(oldResults);
-                ArrayList<Player> oldPlayers = (ArrayList<Player>) input.readObject();
-
-                return FXCollections.observableArrayList(oldPlayers);
+                resultListArray.addAll((ArrayList<Player>) input.readObject());
+                resultList = FXCollections.observableList(resultListArray);
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         } else {
-            return FXCollections.emptyObservableList();
+            resultList = FXCollections.observableList(resultListArray);
         }
-        return FXCollections.emptyObservableList();
+    }
+
+    public void initialize() throws FileNotFoundException {
+        //FIXME
+        // - clean up the view for the user
+        // - add scroll on too many results
+        listOldResults();
+        highScoresListView.setItems(resultList);
     }
 
     @FXML

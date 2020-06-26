@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MenuController implements Exitable {
 
@@ -29,6 +30,9 @@ public class MenuController implements Exitable {
 
     @FXML
     Button highScores;
+
+    //create and initialize global high score list
+    static ArrayList<Player> resultListArray = new ArrayList<>();
 
     @FXML
     private void highScoresTable() throws IOException {

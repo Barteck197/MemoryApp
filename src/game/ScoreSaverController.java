@@ -1,19 +1,18 @@
 package game;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 
 import static game.BoardController.score;
+import static game.MenuController.resultListArray;
 
 public class ScoreSaverController implements Exitable {
 
@@ -26,11 +25,7 @@ public class ScoreSaverController implements Exitable {
     @FXML
     TextField playerName;
 
-    //global high score list
-    static ObservableList<Player> resultList;
-
     public void saveResult() throws IOException {
-        resultList = FXCollections.observableArrayList();
 
         if (playerName.getText().equals("")) {
             alertWrongInput();
@@ -38,15 +33,21 @@ public class ScoreSaverController implements Exitable {
             Player pl = new Player(playerName.getText(), score);
 
             //adding player to global high score list
-            resultList.add(pl);
+            resultListArray.add(pl);
 
-            FileOutputStream fs;
+            File resultFile = new File("highScores.txt");
+
+            if (!resultFile.exists()){
+                resultFile.createNewFile();
+            }
+
+//            FileOutputStream fs;
             ObjectOutputStream os = null;
 
             try {
-                fs = new FileOutputStream("highScores.txt", true);
-                os = new ObjectOutputStream(fs);
-                os.writeObject(new ArrayList<>(resultList));
+//                fs = new FileOutputStream(resultFile, true);
+                os = new ObjectOutputStream(new FileOutputStream(resultFile, true));
+                os.writeObject(resultListArray);
 //                os.writeObject(resultList);
                 os.flush();
             } catch (Exception e) {
