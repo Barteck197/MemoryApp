@@ -25,6 +25,7 @@ public class BoardSettingsController implements Exitable {
 
             Stage window = new Stage();
             window.setScene(new Scene(root));
+            //TODO skalowanie głównego okna z grą
             window.setMinWidth((6*nrOfColumns)+250);
             window.setMinHeight((6*nrOfRows)+250);
             window.show();
@@ -34,7 +35,6 @@ public class BoardSettingsController implements Exitable {
     }
 
 
-    //TODO walidacja "start" bez podanych wymiarów planszy
     public void alertWrongInput() {
         Alert al = new Alert(Alert.AlertType.WARNING);
 
@@ -93,7 +93,7 @@ public class BoardSettingsController implements Exitable {
     @FXML
     TextField columns;
 
-    //TODO zmienne column i row nie mogą być statyczne
+    //TODO czy te zmienne na pewno muszą być statyczne?
     public static int nrOfRows;
     public static int nrOfColumns;
 
