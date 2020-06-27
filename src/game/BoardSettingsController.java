@@ -81,7 +81,6 @@ public class BoardSettingsController implements Exitable {
     @FXML
     TextField columns;
 
-    //TODO czy te zmienne na pewno muszą być statyczne?
     public static int nrOfRows;
     public static int nrOfColumns;
 

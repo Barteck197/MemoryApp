@@ -18,9 +18,7 @@ public class HighScoresController implements Exitable {
     ListView<Player> highScoresListView;
 
     public void initialize() {
-        //FIXME
-        // - clean up the view for the user
-        // - add scroll on too many results
+        //TODO add scroll on too many results
         resultListArray.sort(new PlayerSorter());
         highScoresListView.setItems(resultList);
     }

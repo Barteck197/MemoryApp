@@ -44,7 +44,7 @@ public class BoardController implements Exitable {
     @FXML
     Text appTime;
 
-    //TODO tracing time
+    //TODO fix tracing time
     @FXML
     private void startTime() {
         state = true;
