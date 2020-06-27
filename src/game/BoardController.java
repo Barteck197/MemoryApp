@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -115,8 +116,10 @@ public class BoardController implements Exitable {
 
     private Card selected = null;
     private int clickCount = 2;
+    private int totalClicks = 0;
 
     private static final int pairs = (nrOfColumns * nrOfRows) / 2;
+    private int pairsLeft = pairs;
 
     public void initialize() throws FileNotFoundException {
         score = 10 * nrOfRows * nrOfColumns;
@@ -126,7 +129,6 @@ public class BoardController implements Exitable {
         boardWindow.setPrefWidth(nrOfColumns * 150);
 
         //stworzenie listy par Kart
-
         List<Card> cards = new ArrayList<>();
         for (int i = 0; i < pairs; i++) {
             cards.add(
@@ -186,7 +188,6 @@ public class BoardController implements Exitable {
     }
 
     private class Card extends StackPane {
-        //        Text text = new Text();
         private ImageView cardImageView;
         private final int cardID;
 
@@ -225,15 +226,24 @@ public class BoardController implements Exitable {
                         if (!hasSameValue(selected)) {
                             selected.close();
                             this.close();
+                        } else {
+                            pairsLeft--;
+                        }
+
+                        if (pairsLeft == 0) {
+                            try {
+                                alertWin();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
 
                         selected = null;
                         clickCount = 2;
                     });
                 }
+                totalClicks++;
             });
-
-
             close();
         }
 
@@ -252,10 +262,22 @@ public class BoardController implements Exitable {
             FadeTransition ft = new FadeTransition(Duration.seconds(0.5), cardImageView);
             ft.setToValue(0);
             ft.play();
+
         }
 
         public boolean hasSameValue(Card other) {
             return cardID == other.cardID;
         }
+    }
+
+    public void alertWin() throws IOException {
+        Alert al = new Alert(Alert.AlertType.CONFIRMATION);
+
+        al.setTitle("Koniec!");
+        al.setHeaderText("Wygrałeś!");
+        al.setContentText("Gratulacje. \nOdganięcie wszystkich par kart zajęło ci " + totalClicks + " kliknięć");
+        al.show();
+
+        endGame();
     }
 }

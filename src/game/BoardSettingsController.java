@@ -25,7 +25,6 @@ public class BoardSettingsController implements Exitable {
 
             Stage window = new Stage();
             window.setScene(new Scene(root));
-            //TODO skalowanie głównego okna z grą
             window.setMinWidth((6*nrOfColumns)+250);
             window.setMinHeight((6*nrOfRows)+250);
             window.show();
