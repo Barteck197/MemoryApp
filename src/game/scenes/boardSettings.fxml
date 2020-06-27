@@ -2,31 +2,25 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<GridPane alignment="center" hgap="10" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/stylesheet.css" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.BoardSettingsController">
+<GridPane alignment="center" hgap="10" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/stylesheet.css"
+          vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="game.BoardSettingsController">
 
-    <Label fx:id="boardWindowTitle" text="Choose board dimensions:" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+    <Label fx:id="boardWindowTitle" text="Choose board dimensions:" GridPane.halignment="CENTER" GridPane.rowIndex="0"/>
 
     <GridPane alignment="CENTER" hgap="10" GridPane.rowIndex="1" vgap="10">
         <Label text="rows:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <TextField fx:id="rows" prefWidth="50.0" GridPane.columnIndex="1"  GridPane.rowIndex="0"/>
+        <TextField fx:id="rows" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
         <Label text="columns:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
         <TextField fx:id="columns" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     </GridPane>
 
-    <Button fx:id="startGameButton" onAction="#startGame" prefWidth="100" text="Start" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+    <Button fx:id="startGameButton" onAction="#startGame" prefWidth="100" text="Start" GridPane.halignment="CENTER"
+            GridPane.rowIndex="2"/>
 
-    <Button fx:id="backButton" onAction="#backToMenu" prefWidth="100" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+    <Button fx:id="backButton" onAction="#backToMenu" prefWidth="100" text="Back" GridPane.halignment="CENTER"
+            GridPane.rowIndex="3"/>
 
-    <Button onAction="#exitApp" prefWidth="100" text="Exit" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
+    <Button onAction="#exitApp" prefWidth="100" text="Exit" GridPane.halignment="CENTER" GridPane.rowIndex="4"/>
 
 </GridPane>

@@ -78,11 +78,6 @@ public class MenuController implements Exitable {
     @FXML
     Button closeButton;
 
-    @FXML
-    private void exitGame() {
-
-    }
-
     @Override
     public void exitApp() {
         Stage stage = (Stage) closeButton.getScene().getWindow();

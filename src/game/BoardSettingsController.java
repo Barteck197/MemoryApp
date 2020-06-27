@@ -25,8 +25,8 @@ public class BoardSettingsController implements Exitable {
 
             Stage window = new Stage();
             window.setScene(new Scene(root));
-            window.setMinWidth((6*nrOfColumns)+250);
-            window.setMinHeight((6*nrOfRows)+250);
+            window.setMinWidth((6 * nrOfColumns) + 250);
+            window.setMinHeight((6 * nrOfRows) + 250);
             window.show();
         } else {
             alertWrongInput();
@@ -41,16 +41,6 @@ public class BoardSettingsController implements Exitable {
         al.setHeaderText("Nie można stworzyć planszy");
         al.setContentText("Z wartości, które podałeś nie można stworzyć planszy." +
                 "\nIloczyn liczb wierszy i kolumn w planszy musi być liczbą parzystą.");
-        al.show();
-    }
-
-    public void alertWrongNumber() {
-        Alert al = new Alert(Alert.AlertType.WARNING);
-
-        al.setTitle("Błąd");
-        al.setHeaderText("Nie można stworzyć planszy");
-        al.setContentText("Z wartości, które podałeś nie można stworzyć planszy." +
-                "\nPodałeś zbyt duże wartości.");
         al.show();
     }
 
@@ -85,7 +75,6 @@ public class BoardSettingsController implements Exitable {
     }
 
     //game settings
-
     @FXML
     TextField rows;
 
@@ -103,17 +92,6 @@ public class BoardSettingsController implements Exitable {
         } else {
             nrOfRows = Integer.parseInt(rows.getText());
         }
-
-        //TODO poprawna konfiguracja regexów
-        /*if (rows.getText().matches("/d+")) {
-            if (rows.getText().matches("\b([1-9]|1[0-6])\b")) {
-                nrOfRows = Integer.parseInt(rows.getText());
-            } else {
-                alertWrongNumber();
-            }
-        } else {
-            alertInputNotNumber();
-        }*/
     }
 
     public void setNrOfColumns() {
@@ -122,19 +100,6 @@ public class BoardSettingsController implements Exitable {
         } else {
             nrOfColumns = Integer.parseInt(columns.getText());
         }
-
-        //TODO poprawna konfiguracja regexów
-        /*
-        if (rows.getText().matches("/d+")) {
-            if (rows.getText().matches("\b([1-9]|1[0-6])\b")) {
-                nrOfColumns = Integer.parseInt(columns.getText());
-            } else {
-                alertWrongNumber();
-            }
-        } else {
-            alertInputNotNumber();
-        }
-        */
     }
 
     @Override

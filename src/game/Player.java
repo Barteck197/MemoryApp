@@ -19,19 +19,6 @@ public class Player implements Serializable {
         return playerResult;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    //setters
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPlayerResult(int playerResult) {
-        this.playerResult = playerResult;
-    }
-
     @Override
     public String toString() {
         return id + ";" + name + ";" + playerResult;

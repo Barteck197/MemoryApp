@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <BorderPane fx:id="boardWindow" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.BoardController">
@@ -15,8 +14,6 @@
                     <Insets right="10.0" />
                 </HBox.margin>
             </Text>
-            <Button onMouseClicked="#endGame" text="save" />
-            <Button onMouseClicked="#exitApp" text="exit" />
         </HBox>
     </bottom>
 </BorderPane>
