@@ -14,6 +14,8 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -138,8 +140,8 @@ public class BoardController implements Exitable {
 
         for (int i = 0; i < cards.size(); i++) {
             Card card = cards.get(i);
-            card.setTranslateX(50 * (i % nrOfRows));
-            card.setTranslateY(50 * (i / nrOfRows));
+            card.setTranslateX(100 * (i % nrOfRows));
+            card.setTranslateY(100 * (i / nrOfRows));
             gameBoard.getChildren().add(card);
         }
 
@@ -193,23 +195,20 @@ public class BoardController implements Exitable {
             Image cardImage = new Image(new FileInputStream(path));
             cardImageView = new ImageView(cardImage);
 
-            cardImageView.setFitHeight(50);
-            cardImageView.setFitWidth(50);
+            cardImageView.setFitHeight(100);
+            cardImageView.setFitWidth(100);
             cardImageView.setPreserveRatio(true);
 
-            //setting cardID - necessary to get pairs.
+            //setting cardID - necessary to check if pair.
             this.cardID = cardID;
 
-/*
-            Rectangle border = new Rectangle(50, 50);
+            Rectangle border = new Rectangle(100,100);
             border.setFill(null);
             border.setStroke(Color.BLACK);
+            border.setStrokeWidth(5);
 
-            text.setText(value);
-            text.setFont(Font.font(30));
-*/
             setAlignment(Pos.CENTER);
-            getChildren().addAll(cardImageView);
+            getChildren().addAll(cardImageView,border);
             setOnMouseClicked(event -> {
                 if (isOpen() || clickCount == 0)
                     return;
