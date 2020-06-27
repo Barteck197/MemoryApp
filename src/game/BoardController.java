@@ -10,7 +10,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -104,8 +103,6 @@ public class BoardController implements Exitable {
         t.start();*/
     }
 
-    @FXML
-    BorderPane boardWindow;
 
     @FXML
     Pane gameBoard;
@@ -118,11 +115,11 @@ public class BoardController implements Exitable {
     public void initialize() {
         score = 10 * nrOfRows * nrOfColumns;
 //        startTime();
-        gameBoard.setPrefHeight((6 * nrOfRows) + 150);
-        gameBoard.setPrefHeight((6 * nrOfColumns) + 150);
-
-        boardWindow.setPrefHeight((6 * nrOfRows) + 200);
-        boardWindow.setPrefHeight((6 * nrOfColumns) + 200);
+//        gameBoard.setPrefHeight((6 * nrOfRows) + 150);
+//        gameBoard.setPrefHeight((6 * nrOfColumns) + 150);
+//
+//        boardWindow.setPrefHeight((6 * nrOfRows) + 200);
+//        boardWindow.setPrefWidth((6 * nrOfColumns) + 200);
 
         //stworzenie listy par Kart
 
@@ -142,6 +139,7 @@ public class BoardController implements Exitable {
             card.setTranslateY(50 * (i / nrOfRows));
             gameBoard.getChildren().add(card);
         }
+
     }
 
     //TODO exiting with key combination
@@ -190,9 +188,6 @@ public class BoardController implements Exitable {
             border.setFill(null);
             border.setStroke(Color.BLACK);
 
-            //FIXME:
-            // - grafika zamiast tekstu
-            // - inna grafika na awers i rewers
 
             text.setText(value);
             text.setFont(Font.font(30));
@@ -222,6 +217,7 @@ public class BoardController implements Exitable {
                 }
             });
 
+
             close();
         }
 
@@ -245,6 +241,6 @@ public class BoardController implements Exitable {
         public boolean hasSameValue(Card other) {
             return text.getText().equals(other.text.getText());
         }
-        //TODO alert - koniec gry jak wszystkie karty odkryte
+
     }
 }
