@@ -34,7 +34,6 @@ public class BoardSettingsController implements Exitable {
     }
 
 
-    //TODO walidacja "start" bez podanych wymiarów planszy
     public void alertWrongInput() {
         Alert al = new Alert(Alert.AlertType.WARNING);
 
