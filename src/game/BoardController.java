@@ -6,19 +6,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -112,7 +113,7 @@ public class BoardController implements Exitable {
 
     private static final int pairs = (nrOfColumns * nrOfRows) / 2;
 
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
         score = 10 * nrOfRows * nrOfColumns;
 //        startTime();
 //        gameBoard.setPrefHeight((6 * nrOfRows) + 150);
@@ -123,12 +124,14 @@ public class BoardController implements Exitable {
 
         //stworzenie listy par Kart
 
-        char c = 'A';
         List<Card> cards = new ArrayList<>();
         for (int i = 0; i < pairs; i++) {
-            cards.add(new Card(String.valueOf(c)));
-            cards.add(new Card(String.valueOf(c)));
-            c++;
+            cards.add(
+                    new Card("./src/game/img/p" + (i + 1) + ".jpeg", i)
+            );
+            cards.add(
+                    new Card("./src/game/img/p" + (i + 1) + ".jpeg", i)
+            );
         }
 
         Collections.shuffle(cards);
@@ -180,20 +183,33 @@ public class BoardController implements Exitable {
     }
 
     private class Card extends StackPane {
-        Text text = new Text();
+        //        Text text = new Text();
+        private ImageView cardImageView;
+        private final int cardID;
 
-        public Card(String value) {
+        public Card(String path, int cardID) throws FileNotFoundException {
 
+            //setting up graphics of the card
+            Image cardImage = new Image(new FileInputStream(path));
+            cardImageView = new ImageView(cardImage);
+
+            cardImageView.setFitHeight(50);
+            cardImageView.setFitWidth(50);
+            cardImageView.setPreserveRatio(true);
+
+            //setting cardID - necessary to get pairs.
+            this.cardID = cardID;
+
+/*
             Rectangle border = new Rectangle(50, 50);
             border.setFill(null);
             border.setStroke(Color.BLACK);
 
-
             text.setText(value);
             text.setFont(Font.font(30));
-
+*/
             setAlignment(Pos.CENTER);
-            getChildren().addAll(border, text);
+            getChildren().addAll(cardImageView);
             setOnMouseClicked(event -> {
                 if (isOpen() || clickCount == 0)
                     return;
@@ -222,25 +238,24 @@ public class BoardController implements Exitable {
         }
 
         public boolean isOpen() {
-            return text.getOpacity() == 1;
+            return cardImageView.getOpacity() == 1;
         }
 
         public void open(Runnable action) {
-            FadeTransition ft = new FadeTransition(Duration.seconds(0.5), text);
+            FadeTransition ft = new FadeTransition(Duration.seconds(0.5), cardImageView);
             ft.setToValue(1);
             ft.setOnFinished(e -> action.run());
             ft.play();
         }
 
         public void close() {
-            FadeTransition ft = new FadeTransition(Duration.seconds(0.5), text);
+            FadeTransition ft = new FadeTransition(Duration.seconds(0.5), cardImageView);
             ft.setToValue(0);
             ft.play();
         }
 
         public boolean hasSameValue(Card other) {
-            return text.getText().equals(other.text.getText());
+            return cardID == other.cardID;
         }
-
     }
 }
