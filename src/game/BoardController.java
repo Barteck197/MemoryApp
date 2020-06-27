@@ -1,21 +1,28 @@
 package game;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static game.BoardSettingsController.nrOfColumns;
 import static game.BoardSettingsController.nrOfRows;
@@ -96,11 +103,14 @@ public class BoardController implements Exitable {
         t.start();*/
     }
 
-    @FXML
-    BorderPane boardWindow;
 
     @FXML
     Pane gameBoard;
+
+    private Card selected = null;
+    private int clickCount = 2;
+
+    private static final int pairs = (nrOfColumns * nrOfRows) / 2;
 
     public void initialize() {
         score = 10 * nrOfRows * nrOfColumns;
@@ -111,29 +121,25 @@ public class BoardController implements Exitable {
 //        boardWindow.setPrefHeight((6 * nrOfRows) + 200);
 //        boardWindow.setPrefWidth((6 * nrOfColumns) + 200);
 
-        //TODO wyświetlanie kart
-        int Hpos;
-        int Vpos = 10;
-        for (int i = 0; i < nrOfRows; i++) {
-            Hpos = 10;
-            for (int j = 0; j < nrOfColumns; j++) {
-                //TODO dodawanie grafiki karty
-//                Card card = new Card();
+        //stworzenie listy par Kart
 
-                Rectangle card2 = new Rectangle();
-                card2.setFill(Color.BLACK);
-                card2.setHeight(20);
-                card2.setWidth(20);
-
-                card2.setLayoutX(Hpos);
-                card2.setLayoutY(Vpos);
-
-                gameBoard.getChildren().add(card2);
-
-                Hpos += 25;
-            }
-            Vpos += 25;
+        char c = 'A';
+        List<Card> cards = new ArrayList<>();
+        for (int i = 0; i < pairs; i++) {
+            cards.add(new Card(String.valueOf(c)));
+            cards.add(new Card(String.valueOf(c)));
+            c++;
         }
+
+        Collections.shuffle(cards);
+
+        for (int i = 0; i < cards.size(); i++) {
+            Card card = cards.get(i);
+            card.setTranslateX(50 * (i % nrOfRows));
+            card.setTranslateY(50 * (i / nrOfRows));
+            gameBoard.getChildren().add(card);
+        }
+
     }
 
     //TODO exiting with key combination
@@ -148,23 +154,6 @@ public class BoardController implements Exitable {
             System.out.println("CTRL + ALT");
         }
     }
-
-    /*public static GridPane board(int rows, int columns) {
-
-        GridPane board = new GridPane();
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-
-                Card card = new Card();
-
-                board.add(card, i, j);
-                GridPane.setMargin(card, new Insets(5));
-            }
-        }
-        return board;
-    }
-*/
 
     public void endGame() throws IOException {
         state = false;
@@ -188,5 +177,70 @@ public class BoardController implements Exitable {
         state = false;
         Stage stage = (Stage) appTime.getScene().getWindow();
         stage.close();
+    }
+
+    private class Card extends StackPane {
+        Text text = new Text();
+
+        public Card(String value) {
+
+            Rectangle border = new Rectangle(50, 50);
+            border.setFill(null);
+            border.setStroke(Color.BLACK);
+
+
+            text.setText(value);
+            text.setFont(Font.font(30));
+
+            setAlignment(Pos.CENTER);
+            getChildren().addAll(border, text);
+            setOnMouseClicked(event -> {
+                if (isOpen() || clickCount == 0)
+                    return;
+
+                clickCount--;
+
+                if (selected == null) {
+                    selected = this;
+                    open(() -> {
+                    });
+                } else {
+                    open(() -> {
+                        if (!hasSameValue(selected)) {
+                            selected.close();
+                            this.close();
+                        }
+
+                        selected = null;
+                        clickCount = 2;
+                    });
+                }
+            });
+
+
+            close();
+        }
+
+        public boolean isOpen() {
+            return text.getOpacity() == 1;
+        }
+
+        public void open(Runnable action) {
+            FadeTransition ft = new FadeTransition(Duration.seconds(0.5), text);
+            ft.setToValue(1);
+            ft.setOnFinished(e -> action.run());
+            ft.play();
+        }
+
+        public void close() {
+            FadeTransition ft = new FadeTransition(Duration.seconds(0.5), text);
+            ft.setToValue(0);
+            ft.play();
+        }
+
+        public boolean hasSameValue(Card other) {
+            return text.getText().equals(other.text.getText());
+        }
+
     }
 }
