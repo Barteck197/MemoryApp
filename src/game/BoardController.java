@@ -8,6 +8,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -96,13 +97,19 @@ public class BoardController implements Exitable {
     }
 
     @FXML
+    BorderPane boardWindow;
+
+    @FXML
     Pane gameBoard;
 
     public void initialize() {
         score = 10 * nrOfRows * nrOfColumns;
 //        startTime();
-        gameBoard.setPrefHeight((nrOfRows * 25) + (nrOfRows - 1) * 5);
-        gameBoard.setPrefHeight((nrOfColumns * 25) + (nrOfColumns - 1) * 5);
+//        gameBoard.setPrefHeight((6 * nrOfRows) + 150);
+//        gameBoard.setPrefHeight((6 * nrOfColumns) + 150);
+//
+//        boardWindow.setPrefHeight((6 * nrOfRows) + 200);
+//        boardWindow.setPrefWidth((6 * nrOfColumns) + 200);
 
         //TODO wyświetlanie kart
         int Hpos;

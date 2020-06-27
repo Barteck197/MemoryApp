@@ -25,8 +25,8 @@ public class BoardSettingsController implements Exitable {
 
             Stage window = new Stage();
             window.setScene(new Scene(root));
-            window.setWidth(600);
-            window.setHeight(400);
+            window.setMinWidth((6*nrOfColumns)+250);
+            window.setMinHeight((6*nrOfRows)+250);
             window.show();
         } else {
             alertWrongInput();
@@ -93,6 +93,7 @@ public class BoardSettingsController implements Exitable {
     @FXML
     TextField columns;
 
+    //TODO zmienne column i row nie mogą być statyczne
     public static int nrOfRows;
     public static int nrOfColumns;
 
