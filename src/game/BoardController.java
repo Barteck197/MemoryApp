@@ -12,6 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -106,6 +107,8 @@ public class BoardController implements Exitable {
         t.start();*/
     }
 
+    @FXML
+    BorderPane boardWindow;
 
     @FXML
     Pane gameBoard;
@@ -118,11 +121,9 @@ public class BoardController implements Exitable {
     public void initialize() throws FileNotFoundException {
         score = 10 * nrOfRows * nrOfColumns;
 //        startTime();
-//        gameBoard.setPrefHeight((6 * nrOfRows) + 150);
-//        gameBoard.setPrefHeight((6 * nrOfColumns) + 150);
-//
-//        boardWindow.setPrefHeight((6 * nrOfRows) + 200);
-//        boardWindow.setPrefWidth((6 * nrOfColumns) + 200);
+
+        boardWindow.setPrefHeight(nrOfRows * 150);
+        boardWindow.setPrefWidth(nrOfColumns * 150);
 
         //stworzenie listy par Kart
 
@@ -202,13 +203,13 @@ public class BoardController implements Exitable {
             //setting cardID - necessary to check if pair.
             this.cardID = cardID;
 
-            Rectangle border = new Rectangle(100,100);
+            Rectangle border = new Rectangle(100, 100);
             border.setFill(null);
             border.setStroke(Color.BLACK);
             border.setStrokeWidth(5);
 
             setAlignment(Pos.CENTER);
-            getChildren().addAll(cardImageView,border);
+            getChildren().addAll(cardImageView, border);
             setOnMouseClicked(event -> {
                 if (isOpen() || clickCount == 0)
                     return;
